@@ -1,0 +1,21 @@
+
+
+
+
+.container {
+    padding: 25px;
+}
+
+.item {
+    display: block;
+    width: 200px;
+    height: 125px;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 24px;
+    color: azure;
+    text-align: center;
+    line-height: 125px;
+    background: url(assets/pic/arcanoid.jpg);
+    background-size: contain;
+}
