@@ -11,7 +11,7 @@ const game = {
   ball: null,
   blocks: [],
   rows: null,
-  cols: 1,
+  cols: 8,
   width: 640,
   height: 360,
   score: Number(localStorage.getItem('score') ?? 0),
@@ -138,7 +138,7 @@ const game = {
     }
     this.deletedBlocks += 1;
     if (this.deletedBlocks >= this.blocks.length) {
-      this.end("Вы выиграли!!!", 'win');
+      this.end(`Ваш счет ${this.score} и вы переходите на следующий уровень!!!`, 'win');
       localStorage.setItem('score', String(this.score));
       localStorage.setItem('level', String(this.level + 1));
 
@@ -184,9 +184,9 @@ const game = {
     this.ctx.drawImage(this.sprites.platform, this.platform.x, this.platform.y);
     this.renderBlocks();
     this.ctx.fillText(`Очки: ${this.score}`, 15, 20)
-    this.ctx.fillText(`Уровень: ${this.level}`, 100, 20)
+    this.ctx.fillText(`Уровень: ${this.level}`, 150, 20)
     if (!this.running) {
-      this.ctx.fillText(`${this.message}`, 250, 180);
+      this.ctx.fillText(`${this.message}`, 70, 180);
     }
 
   },
@@ -261,7 +261,7 @@ game.ball = {
       this.dy = this.velocity;
       game.sounds.bump.play();
     } else if ((y + this.height) > game.height) {
-      game.end("Вы проиграли", 'lose')
+      game.end(`Ваш счет ${game.score} и вы проиграли`, 'lose')
       localStorage.clear();
     }
   },
